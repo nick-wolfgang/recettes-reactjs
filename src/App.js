@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { db } from "./firebase.config"
-import { collection, onSnapshot } from 'firebase/firestore'
+import { collection, onSnapshot, doc,  addDoc, deleteDoc} from 'firebase/firestore'
 
 function App() {
 const [recipes, setRecipes] = useState([])
@@ -44,6 +44,23 @@ const [form, setForm] = useState({
   
   const handleSubmit = e => {
     e.preventDefault()
+
+    if (//Check if all fields are filled out
+      !form.title ||
+      !form.desc ||
+      !form.ingredients ||
+      !form.steps
+    ) {
+      alert("Veuillez remplir tous les champs!")
+      return
+    }
+    addDoc(recipesCollectionRef, form)//Adding a recipe
+
+    setForm({ //We set back our form to its default state
+      title : "", desc : "", ingredients : [], steps : []
+    })
+
+    setPopupActive(false)
   }
 
   const handleIngredient = (e, i) => { //This is what's going to be done when we add an ingredient
@@ -79,6 +96,10 @@ const [form, setForm] = useState({
     })
   }
 
+  const removeRecipe = id => {
+    deleteDoc(doc(db, "recipes", id))
+  }
+
   return (
     <div className="App">
       <h1>Mes  Recettes</h1>
@@ -107,8 +128,8 @@ const [form, setForm] = useState({
               </div> 
             }
             <div className='buttons'>  
-              <button onClick={() => handleView(recipe.id)}>View {recipe.viewing ? 'less' : 'more'}</button>
-              <button className='remove'> Remove</button> 
+              <button onClick={() => handleView(recipe.id)}>Voir {recipe.viewing ? 'plus' : 'moins'}</button>
+              <button onClick={() => removeRecipe(recipe.id) } className='remove'> Supprimer</button> 
             </div>
           </div>
         ))}
