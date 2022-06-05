@@ -46,6 +46,39 @@ const [form, setForm] = useState({
     e.preventDefault()
   }
 
+  const handleIngredient = (e, i) => { //This is what's going to be done when we add an ingredient
+    const ingredientsClone = [...form.ingredients]
+
+    ingredientsClone[i] = e.target.value
+    setForm({
+      ...form, //Current form
+      ingredients : ingredientsClone //and only the table of ingredients changes 
+    })
+  }
+  const handleStep = (e, i) => { //This is what's going to be done when we add a step
+    const stepsClone = [...form.steps]
+    
+    stepsClone[i] = e.target.value
+    setForm({
+      ...form, //Current form
+      steps : stepsClone //and only the table of ingredients changes 
+    })
+  }
+
+  const handleIngredientCount = () => {
+    setForm({
+      ...form,
+      ingredients : [...form.ingredients, ""]
+    })
+  }
+
+  const handleStepCount = () => {
+    setForm({
+      ...form,
+      steps : [...form.steps, ""]
+    })
+  }
+
   return (
     <div className="App">
       <h1>Mes  Recettes</h1>
@@ -116,10 +149,42 @@ const [form, setForm] = useState({
                       />
                     ))
                   }
-                  
+                  <button 
+                    type='button' 
+                    onClick={handleIngredientCount}
+                  > Ajouter Ingrédient</button>
+                </div>
+
+                <div className='form-group'>
+                  <labal>Etapes de préparation</labal>
+                  {
+                    form.steps.map((step, i) => (
+                      <textarea 
+                        type="text"
+                        key={i} 
+                        value={step} 
+                        onChange={e => handleStep(e, i)} 
+                      />
+                    ))
+                  }
+                  <button 
+                    type='button' 
+                    onClick={handleStepCount}
+                  > Ajouter cette etape</button>
+                </div>
+
+                <div className='buttons'>
+                  <button type="submit">Ok</button>
+                  <button 
+                    type='button' 
+                    class="remove" 
+                    onClick={() => setPopupActive(false)}
+                  >
+                      Fermer
+                  </button>
                 </div>
               </form>
-s            </div>
+             </div>
           </div>
       }
     </div>
