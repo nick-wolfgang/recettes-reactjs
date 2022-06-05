@@ -33,7 +33,7 @@ const [form, setForm] = useState({
 
     recipesClone.forEach(recipe => {
       if(recipe.id === id) {
-        recipe.viewing = true
+        recipe.viewing = !recipe.viewing
       } else {
         recipe.viewing = false
       }
@@ -41,11 +41,16 @@ const [form, setForm] = useState({
 
     setRecipes(recipesClone)
   }
+  
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
 
   return (
     <div className="App">
-      <h1>Mes  Recettes</h1> 
-      <button>Ajouter une recette</button>
+      <h1>Mes  Recettes</h1>
+      {/* initially, popupActive is set to "false" for it to be true, ----> */}
+      <button onClick={() => setPopupActive(!popupActive)}>Ajouter une recette</button>
 
       <div className='recipes'>
         { recipes.map((recipe, i) => (
@@ -75,6 +80,48 @@ const [form, setForm] = useState({
           </div>
         ))}
       </div> 
+      { popupActive && <div className='popup'>
+            <div className='popup-inner'>
+              <h2>Ajouter une nouvelle recette</h2>
+
+              <form onSubmit={handleSubmit}>
+                 
+                <div className='form-group'>
+                  <labal>Title</labal>
+                  <input 
+                    type="text" 
+                    value={form.title} 
+                    onChange={e => setForm({...form, title : e.target.value})} 
+                  />
+                </div>
+
+                <div className='form-group'>
+                  <labal>Description</labal>
+                  <textarea 
+                    type="text" 
+                    value={form.desc} 
+                    onChange={e => setForm({...form, desc : e.target.value})} 
+                  />
+                </div>
+
+                <div className='form-group'>
+                  <labal>Ingrédients</labal>
+                  {
+                    form.ingredients.map((ingredient, i) => (
+                      <input 
+                        type="text"
+                        key={i} 
+                        value={ingredient} 
+                        onChange={e => handleIngredient(e, i)} 
+                      />
+                    ))
+                  }
+                  
+                </div>
+              </form>
+s            </div>
+          </div>
+      }
     </div>
   );
 }
