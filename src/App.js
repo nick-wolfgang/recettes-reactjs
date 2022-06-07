@@ -128,7 +128,7 @@ const [form, setForm] = useState({
               </div> 
             }
             <div className='buttons'>  
-              <button onClick={() => handleView(recipe.id)}>Voir {recipe.viewing ? 'plus' : 'moins'}</button>
+              <button onClick={() => handleView(recipe.id)}>Voir {recipe.viewing ? 'moins' : 'plus' }</button>
               <button onClick={() => removeRecipe(recipe.id) } className='remove'> Supprimer</button> 
             </div>
           </div>
