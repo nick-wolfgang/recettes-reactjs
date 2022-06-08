@@ -110,6 +110,8 @@ const [form, setForm] = useState({
         { recipes.map((recipe, i) => (
           <div className="recipe" key={recipe.id}>
             <h3>{ recipe.title }</h3>
+            <div className='underline'></div>
+            <em><span className='desc'>Description :</span></em>
             <p dangerouslySetInnerHTML={{ __html : recipe.desc }}></p>
             
             { recipe.viewing && <div> 
@@ -128,7 +130,7 @@ const [form, setForm] = useState({
               </div> 
             }
             <div className='buttons'>  
-              <button onClick={() => handleView(recipe.id)}>Voir {recipe.viewing ? 'moins' : 'plus' }</button>
+              <button onClick={() => handleView(recipe.id)} className='see_more'>Voir {recipe.viewing ? 'moins' : 'plus' }</button>
               <button onClick={() => removeRecipe(recipe.id) } className='remove'> Supprimer</button> 
             </div>
           </div>

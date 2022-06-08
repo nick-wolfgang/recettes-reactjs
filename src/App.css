@@ -1,14 +1,59 @@
-* {
-  margin: 0;
+.App {
+  background-color: #072036;
+  margin: 5%;
+  border: 2px solid black;
+  border-radius: 1%;
+  color: whitesmoke;
+  position : static;
 }
-.app {
-  background-color: #fafafa;
+
+.recipes {
+  display: flex;
+  margin: 30px;
+  background-color: #3722D3;
+  padding: 3%;
 }
-.app__header {
-  padding: 10px;
-  border-bottom: 1px solid lightgray;
-  object-fit: contain;
+
+.recipe {
+  border: 2px double black;
+  margin-right: 5%;
+  min-width: 10%;
 }
-.app__headerImage {
-  width: 15%;
+.desc {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(173, 173, 173);
+  line-height: 0%;
+}
+.underline {
+  background-color: #1DE9B6;
+  width: 8%;
+  height: 6px;
+  line-height: 0;
+  margin-top: -20px;
+  border-radius: 20%;
+  margin-bottom: 5%;
+}
+.buttons {
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  display: flex;
+  margin-bottom: 10%;
+  /* margin-top: 70%; */
+  position: static;
+}
+.remove {
+  background-color: red;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 800;
+  padding: 1%;
+  border-radius: 5%;
+}
+.see_more {
+  background-color: #00FF84;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 800;
+  color: rgb(95, 87, 87);
+  padding: 1%;
+  border-radius: 5%;
 }
