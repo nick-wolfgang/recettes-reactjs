@@ -4,25 +4,27 @@
   border: 2px solid black;
   border-radius: 1%;
   color: whitesmoke;
-  position : static;
 }
 
 .recipes {
-  display: flex;
+  display: grid;
+  gap: 10px 14px;
   margin: 30px;
   background-color: #3722D3;
   padding: 3%;
+  flex-wrap: wrap;
 }
 
 .recipe {
   border: 2px double black;
   margin-right: 5%;
-  min-width: 10%;
 }
 .desc {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: rgb(173, 173, 173);
   line-height: 0%;
+  font-size: small;
+  margin-bottom: -30px;
 }
 .underline {
   background-color: #1DE9B6;
@@ -34,12 +36,10 @@
   margin-bottom: 5%;
 }
 .buttons {
-  justify-content: space-around;
-  flex-wrap: nowrap;
   display: flex;
-  margin-bottom: 10%;
-  /* margin-top: 70%; */
-  position: static;
+  gap: 20px;
+  align-items: center;
+  height: 70px;
 }
 .remove {
   background-color: red;
@@ -48,6 +48,7 @@
   font-weight: 800;
   padding: 1%;
   border-radius: 5%;
+  cursor: pointer;
 }
 .see_more {
   background-color: #00FF84;
@@ -56,4 +57,8 @@
   color: rgb(95, 87, 87);
   padding: 1%;
   border-radius: 5%;
+  cursor: pointer;
+}
+.addRecipe {
+  z-index: 2;
 }

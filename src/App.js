@@ -21,6 +21,7 @@ const [form, setForm] = useState({
         return {
           id : doc.id, //we'll need this id
           viewing : false,
+          //deleteRecipe : false,
           ...doc.data() //this is same as doing :
           //title : doc.data().title, and so on ...
         }
@@ -55,7 +56,7 @@ const [form, setForm] = useState({
       return
     }
     addDoc(recipesCollectionRef, form)//Adding a recipe
-
+    
     setForm({ //We set back our form to its default state
       title : "", desc : "", ingredients : [], steps : []
     })
@@ -66,7 +67,7 @@ const [form, setForm] = useState({
   const handleIngredient = (e, i) => { //This is what's going to be done when we add an ingredient
     const ingredientsClone = [...form.ingredients]
 
-    ingredientsClone[i] = e.target.value
+    ingredientsClone[i] = e.target.value  //Adding the ingredient to the list of ingredients
     setForm({
       ...form, //Current form
       ingredients : ingredientsClone //and only the table of ingredients changes 
@@ -129,7 +130,7 @@ const [form, setForm] = useState({
               </ol>
               </div> 
             }
-            <div className='buttons'>  
+            <div className='buttons'>
               <button onClick={() => handleView(recipe.id)} className='see_more'>Voir {recipe.viewing ? 'moins' : 'plus' }</button>
               <button onClick={() => removeRecipe(recipe.id) } className='remove'> Supprimer</button> 
             </div>
@@ -138,7 +139,7 @@ const [form, setForm] = useState({
       </div> 
       { popupActive && <div className='popup'>
             <div className='popup-inner'>
-              <h2>Ajouter une nouvelle recette</h2>
+              <h2 className="addRecipe">Ajouter une nouvelle recette</h2>
 
               <form onSubmit={handleSubmit}>
                  
