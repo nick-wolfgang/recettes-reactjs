@@ -104,8 +104,6 @@ const [form, setForm] = useState({
   return (
     <div className="App">
       <h1>Mes  Recettes</h1>
-      {/* initially, popupActive is set to "false" for it to be true, ----> */}
-      <button onClick={() => setPopupActive(!popupActive)}>Ajouter une recette</button>
 
       <div className='recipes'>
         { recipes.map((recipe, i) => (
@@ -144,7 +142,7 @@ const [form, setForm] = useState({
               <form onSubmit={handleSubmit}>
                  
                 <div className='form-group'>
-                  <labal>Title</labal>
+                  <label>Title</label>
                   <input 
                     type="text" 
                     value={form.title} 
@@ -153,7 +151,7 @@ const [form, setForm] = useState({
                 </div>
 
                 <div className='form-group'>
-                  <labal>Description</labal>
+                  <label>Description</label>
                   <textarea 
                     type="text" 
                     value={form.desc} 
@@ -162,7 +160,7 @@ const [form, setForm] = useState({
                 </div>
 
                 <div className='form-group'>
-                  <labal>Ingrédients</labal>
+                  <label>Ingrédients</label>
                   {
                     form.ingredients.map((ingredient, i) => (
                       <input 
@@ -180,7 +178,7 @@ const [form, setForm] = useState({
                 </div>
 
                 <div className='form-group'>
-                  <labal>Etapes de préparation</labal>
+                  <label>Etapes de préparation</label>
                   {
                     form.steps.map((step, i) => (
                       <textarea 
@@ -208,9 +206,12 @@ const [form, setForm] = useState({
                   </button>
                 </div>
               </form>
-             </div>
-          </div>
+            </div>
+         </div>
       }
+      {/* initially, popupActive is set to "false" for it to be true, ----> */}
+      <button onClick={() => setPopupActive(!popupActive)}>Ajouter une recette</button>
+ 
     </div>
   );
 }

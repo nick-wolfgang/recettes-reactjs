@@ -1,7 +1,7 @@
 {
-  "homepage": "http://nick-Wolfgang.github.io/recettes-reactjs",
   "name": "mon-app1",
   "version": "0.1.0",
+  "homepage": "https://nick-Wolfgang.github.io/recettes-reactjs",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
